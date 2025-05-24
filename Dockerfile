@@ -16,6 +16,17 @@ RUN apk add --no-cache \
     make \
     g++ \
     cmake
+    # Install necessary dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libffi-dev \
+    musl-dev \
+    ffmpeg \
+    aria2 \
+    make \
+    g++ \
+    cmake && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install Bento4
 RUN wget -q https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-639.zip && \
